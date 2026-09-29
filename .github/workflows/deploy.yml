@@ -16,5 +16,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/app
-            echo "<!DOCTYPE html><html><body style='background:black;color:#6ee7b7;font-family:sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;'><div style='text-align:center;'><h1>AUTO-DEPLOY SUCCESSFUL</h1><p>Deployed via GitHub Actions on push to main</p></div></body></html>" > html/index.html
+            echo "<!DOCTYPE html><html><body style='background:black;color:black;font-family:sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;'><div style='text-align:center;'><h1>AUTO-DEPLOY SUCCESSFUL</h1><p>Deployed via GitHub Actions on push to main</p></div></body></html>" > html/index.html
             docker compose restart web
