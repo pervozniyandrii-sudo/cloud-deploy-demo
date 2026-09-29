@@ -1,0 +1,20 @@
+name: Deploy Production Node
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to DigitalOcean via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: root
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/app
+            echo "<!DOCTYPE html><html><body style='background:#022c22;color:#6ee7b7;font-family:sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;'><div style='text-align:center;'><h1>AUTO-DEPLOY SUCCESSFUL</h1><p>Deployed via GitHub Actions on push to main</p></div></body></html>" > html/index.html
+            docker compose restart web
